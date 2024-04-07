@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:t_store/common/widgets/appbar/appbar.dart';
 import 'package:t_store/common/widgets/products/cart/cart_menu_icon.dart';
@@ -38,6 +37,7 @@ class THomeAppBar extends StatelessWidget {
           iconColor: TColors.white,
         )
       ],
+      backgroundColor: TColors.primary,
     );
   }
 }
