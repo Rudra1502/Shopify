@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:t_store/common/widgets/appbar/appbar.dart';
+import 'package:t_store/common/widgets/appbar/tabbar.dart';
 import 'package:t_store/common/widgets/custom_shapes/containers/search_container.dart';
 import 'package:t_store/common/widgets/layout/grid_layout.dart';
 import 'package:t_store/common/widgets/products/cart/cart_menu_icon.dart';
-import 'package:t_store/common/widgets/products/product_cards/t_brand_card.dart';
+import 'package:t_store/common/widgets/brands/t_brand_card.dart';
 import 'package:t_store/common/widgets/texts/section_heading.dart';
+import 'package:t_store/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:t_store/utils/constants/colors.dart';
 import 'package:t_store/utils/constants/sizes.dart';
 import 'package:t_store/utils/helpers/helper_functions.dart';
@@ -18,6 +20,7 @@ class StoreScreen extends StatelessWidget {
     return DefaultTabController(
       length: 5,
       child: Scaffold(
+        backgroundColor: TColors.white,
         appBar: TAppBar(
           title: Text(
             'Store',
@@ -64,7 +67,9 @@ class StoreScreen extends StatelessWidget {
                           mainAxisExtent: 80,
                           itemCount: 4,
                           itemBuilder: (_, index) {
-                            return const TBrandCard();
+                            return const TBrandCard(
+                              showBorder: true,
+                            );
                           },
                         )
                       ],
@@ -72,12 +77,8 @@ class StoreScreen extends StatelessWidget {
                   ),
 
                   // Tabs
-                  bottom: TabBar(
-                    isScrollable: true,
-                    indicatorColor: TColors.primary,
-                    unselectedLabelColor: TColors.darkGrey,
-                    labelColor: dark ? TColors.white : TColors.primary,
-                    tabs: const [
+                  bottom: const TTabBar(
+                    tabs: [
                       Tab(child: Text('Sports')),
                       Tab(child: Text('Furniture')),
                       Tab(child: Text('Electronics')),
@@ -88,7 +89,13 @@ class StoreScreen extends StatelessWidget {
                 )
               ];
             },
-            body: Container()),
+            body: const TabBarView(children: [
+              TCategoryTab(),
+              TCategoryTab(),
+              TCategoryTab(),
+              TCategoryTab(),
+              TCategoryTab()
+            ])),
       ),
     );
   }

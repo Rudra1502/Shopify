@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:t_store/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:t_store/common/widgets/images/t_circular_image.dart';
@@ -12,25 +11,24 @@ import 'package:t_store/utils/helpers/helper_functions.dart';
 class TBrandCard extends StatelessWidget {
   const TBrandCard({
     super.key,
-    this.padding = TSizes.sm,
-    this.showBorder = true,
-    this.backgroundColor,
+    required this.showBorder,
+    this.onTap,
   });
 
-  final double padding;
   final bool showBorder;
-  final Color? backgroundColor;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     final bool dark = THelperFunctions.isDarkMode(context);
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: TRoundedContainer(
-        padding: EdgeInsets.all(padding),
+        padding: const EdgeInsets.all(TSizes.sm),
         showBorder: showBorder,
-        backgroundColor: backgroundColor ?? Colors.transparent,
+        backgroundColor: Colors.transparent,
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             // Icon
             Flexible(

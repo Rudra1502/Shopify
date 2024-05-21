@@ -17,6 +17,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: TColors.white,
       body: SingleChildScrollView(
           child: Column(
         children: [
@@ -48,6 +49,10 @@ class HomeScreen extends StatelessWidget {
                       THomeCategories()
                     ],
                   ),
+                ),
+
+                SizedBox(
+                  height: TSizes.spaceBtwSections + 10,
                 )
               ],
             ),
@@ -56,7 +61,6 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.all(TSizes.defaultSpace),
               child: Column(
                 children: [
-
                   // Promo Slider
                   const TPromoSlider(
                     banners: [
@@ -68,10 +72,10 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: TSizes.spaceBtwSections),
 
                   // Heading
-                  TSectionHeading(title: 'Popular Products', onPressed: (){}),
+                  TSectionHeading(title: 'Popular Products', onPressed: () {}),
                   const SizedBox(height: TSizes.spaceBtwItems),
 
-                  // Popular Products 
+                  // Popular Products
                   TGridLayout(
                       itemCount: 2,
                       itemBuilder: (_, index) => const TProductCardVertical()),
